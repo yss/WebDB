@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <title>WebDB tests</title>
+    <link href="http://cdn.staticfile.org/mocha/1.20.1/mocha.css" rel="stylesheet">
+</head>
+<body>
+<h3>选择特定数据库测试</h3>
+<ol>
+    <li><a href="?indexeddb.js">IndexedDB</a></li>
+    <li><a href="?websql.js">WebSql</a></li>
+    <li><a href="?localstorage.js">LocalStorage</a></li>
+</ol>
+<div id="mocha"></div>
+<div id="container"></div>
+<script src="http://cdn.staticfile.org/jquery/2.1.1/jquery.min.js"></script>
+<script src="http://cdn.staticfile.org/mocha/1.20.1/mocha.js"></script>
+<script src="http://cdn.staticfile.org/should.js/should.js/3.1.4/should.min.js"></script>
+<script src="../src/webDB.js"></script>
+<script>
+    function load(db) {
+        document.write(unescape('%3Cscript src="../src/driver/' + db + '"%3E%3C/script%3E'));
+    }
+    mocha.setup('bdd');
+    var db = location.search.substr(1);
+    if (db) {
+        load(db);
+    } else {
+        load('indexeddb.js');
+        load('websql.js');
+        load('localstorage.js');
+    }
+</script>
+<script src="webDB_test.js"></script>
+<script>mocha.run()</script>
+</body>
+</html>

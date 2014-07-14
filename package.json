@@ -1,0 +1,6 @@
+{
+    "name": "WebDB",
+    "version": "1.0.0",
+    "main": "./src/webDB.js",
+    "description": "Web本地数据库封装，优先支持indexeddb，然后是websql，最后才是localstorage"
+}
